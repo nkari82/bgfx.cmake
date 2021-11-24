@@ -16,6 +16,11 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+if(NOT CMAKE_BUILD_TYPE)
+	set( CMAKE_BUILD_TYPE "Release"  CACHE STRING "Default build type: Release" FORCE)
+	set_property( CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release )
+endif()
+
 # Makefile generators on apple need this flag to compile mixed objective/c++
 if( APPLE AND NOT XCODE )
 	set( CMAKE_CXX_FLAGS "-ObjC++" )
